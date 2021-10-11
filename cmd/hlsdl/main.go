@@ -4,7 +4,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/canhlinh/hlsdl"
+	"github.com/bborn2/hlsdl"
 	"github.com/spf13/cobra"
 )
 
