@@ -1,11 +1,13 @@
 package hlsdl
 
 import (
+	"crypto/tls"
 	"errors"
 	"fmt"
 	"io"
 	"log"
 	"net/http"
+	"net/url"
 	"os"
 	"path/filepath"
 	"runtime"
@@ -54,6 +56,25 @@ func New(hlsURL string, headers map[string]string, dir string, workers int, enab
 	}
 
 	return hlsdl
+}
+
+func (hlsDl *HlsDl) SetProxy(proxy string) {
+
+	if proxy == "" {
+		return
+	}
+
+	transport := &http.Transport{
+		TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
+	}
+
+	proxyURI := func(_ *http.Request) (*url.URL, error) {
+		return url.Parse(proxy)
+	}
+
+	transport.Proxy = proxyURI
+
+	hlsDl.client.Transport = transport
 }
 
 func wait(wg *sync.WaitGroup) chan bool {
