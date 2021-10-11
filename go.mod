@@ -1,4 +1,4 @@
-module github.com/bborn2/hlsdl
+module github.com/bborn2/hlsdl/v2
 
 require (
 	github.com/fatih/color v1.7.0 // indirect
