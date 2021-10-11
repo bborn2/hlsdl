@@ -1,3 +1,6 @@
+#what is this
+Fork form canhlinh/hlsdl and add proxy support
+
 # HLS downloader
 This is a library to support downloading a m3u8 file. All ts segments will be downloaded into a folder then be joined into a single TS file. Default file name is `video.ts`
 
